@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>douconca</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">
+
+div.csl-bib-body { }
+div.csl-entry {
+clear: both;
+margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+margin-left:2em;
+text-indent:-2em;
+}
+div.csl-left-margin {
+min-width:2em;
+float:left;
+}
+div.csl-right-inline {
+margin-left:2em;
+padding-left:1em;
+}
+div.csl-indent {
+margin-left: 2em;
+}
+</style>
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">douconca</h1>
+
+
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(douconca)</span></code></pre></div>
+<div id="the-douconca-package" class="section level1 unnumbered">
+<h1 class="unnumbered">The douconca package</h1>
+<p>The aim of the <code>douconca</code> package is to help ecologists
+unravel trait-environment relationships from an abundance data table
+with associated multi-trait and multi-environment data tables. A popular
+method to such aim is RLQ <span class="citation">(<a href="#ref-doledec1996RLQ">Dolédec et al. 1996</a>; <a href="#ref-dray2014RLQ">Dray et al. 2014</a>)</span>, which also a
+three-tables method. RLQ is available in the R-package
+<code>ade4</code><span class="citation">(<a href="#ref-dray2007ade4">Dray and Dufour 2007</a>; <a href="#ref-thioulouse2018multivariate">Thioulouse et al.
+2018</a>)</span>. The <code>douconca</code> package provides an
+alternative method, termed double-constrained correspondence analysis
+(dc-CA), which is a natural extension of the commonly used method of
+community-weighted means (CWMs) regression <span class="citation">(<a href="#ref-Braak2018dcCA">Ter Braak, Šmilauer, and Dray 2018</a>; <a href="#ref-kleyer2012assessing">Kleyer et al. 2012</a>)</span>. As dc-CA
+is based on both regression analysis and ordination (factorial
+analysis), it allows for the usual forms of testing, model building, and
+of biplots of resulting scores. There are a number of recent
+applications that also contain discussion on the value of dc-CA compared
+to RLQ <span class="citation">(<a href="#ref-peng2021double">Peng et al.
+2021</a>; <a href="#ref-gobbi2022hay">Gobbi et al. 2022</a>; <a href="#ref-pinho2021functional">Pinho et al. 2021</a>)</span>,
+summarized in this document on <a href="https://www.researchgate.net/publication/379731819_dc-CA_RLQ">ResearchGate</a>.</p>
+<p>The <code>douconca</code> package has a
+<code>formula</code>-interface to specify the dc-CA model, and
+<code>scores</code>, <code>anova</code>, <code>plot</code> and
+<code>predict</code> functions, mostly fairly similar to those in the
+<code>vegan</code> package <span class="citation">(<a href="#ref-oksanen_vegan2024">Oksanen et al. 2024</a>)</span> on to
+which <code>douconca</code> is based.</p>
+</div>
+<div id="double-constained-correspondence-analysis" class="section level1">
+<h1>Double constained correspondence analysis</h1>
+<p>As RLQ, dc-CA seeks for an ordination (i.e. a low-dimensional
+representation of) of the multi-trait, multi-environment relationships,
+but dc-CA differs from RLQ in that dc-CA is based on regression with the
+traits and environmental variables as predictors, whereas RLQ is based
+on co-variance. The dc-CA method thus allows for variation-partitioning
+and the type of model-building that is familiar to users of regression
+analysis, whereas RLQ does not.</p>
+<p>A dc-CA axis consists of two regression models (linear combinations),
+one of traits and the other of environmental predictors, the fitted
+values of which can be thought of as a composite trait and a composite
+environmental gradient. The response variables of these regressions are
+species niche centroids and CWMs of such composites. This circularity is
+typical for any eigenvalue ordination method. The linear combinations
+maximizes the fourth-corner correlation between the composite trait and
+composite environmental gradient. The dc-CA eigenvalues are squared
+fourth-corner correlations, but also variances, namely the amounts of
+variation in the abundance data that the consecutive axes explain <span class="citation">(<a href="#ref-Braak2018dcCA">Ter Braak, Šmilauer, and
+Dray 2018</a>)</span>.</p>
+<p>Statistical testing is by the max test <span class="citation">(<a href="#ref-Braak2012max_test">Ter Braak, Cormont, and Dray
+2012</a>)</span>, evaluated by extensive simulation <span class="citation">(<a href="#ref-Braak2019MEE">Ter Braak
+2019</a>)</span>. This test combines two permutations tests, one
+permuting sites and the other permuting species, the maximum P-value of
+which is the final P-value. As in the <code>vegan</code> package, the
+permutations are specified via the <code>permute</code> package <span class="citation">(<a href="#ref-permute2022">Simpson 2022</a>)</span>,
+so as to allow for analysis of hierarchical and nested data designs
+<span class="citation">(<a href="#ref-gobbi2022hay">Gobbi et al.
+2022</a>)</span>.</p>
+<p>In <code>douconca</code>, a dc-CA models is specified by two
+formulas: a <code>formula</code> for the sites (rows) with environmental
+predictors and a <code>formula</code> for the species (columns) with
+trait predictors, which both may contain factors, quantitative variables
+and transformations thereof, and interactions, like in any (generalized)
+linear regression model. The formulas specify the constraints applied to
+the site and species scores; without constraints dc-CA is simply
+correspondence analysis.</p>
+<p>The double constrained version of principal components analysis also
+exists and is available in the Canoco software <span class="citation">(<a href="#ref-Braak2018canoco">Ter Braak and Šmilauer
+2018</a>)</span>, but has less appeal in ecological applications as it
+lacks ecological realism, ease of interpretation and the link to
+methods, such as CWM-regression and fourth-corner correlation analysis,
+which have proven to be useful in trait-based ecology.</p>
+</div>
+<div id="example-data-and-questions" class="section level1">
+<h1>Example data and questions</h1>
+<p>We use the <code>dune_trait_env</code> data in the package to
+illustrate dc-CA. It consists of the abundances of 28 plant species in
+20 meadows (plots, here called sites), trait data for these plant
+species and environmental data of these sites.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(douconca)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;dune_trait_env&quot;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="fu">names</span>(dune_trait_env)</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="co">#&gt; [1] &quot;comm&quot;   &quot;traits&quot; &quot;envir&quot;</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="fu">dim</span>(dune_trait_env<span class="sc">$</span>comm[,<span class="sc">-</span><span class="dv">1</span>]) <span class="do">## without the variable &quot;Sites&quot;</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="co">#&gt; [1] 20 28</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="fu">dim</span>(dune_trait_env<span class="sc">$</span>traits)</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="co">#&gt; [1] 28 11</span></span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="fu">dim</span>(dune_trait_env<span class="sc">$</span>envir)</span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="co">#&gt; [1] 20 10</span></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="fu">names</span>(dune_trait_env<span class="sc">$</span>traits)</span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;Species&quot;      &quot;Species_abbr&quot; &quot;SLA&quot;          &quot;Height&quot;       &quot;LDMC&quot;        </span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="co">#&gt;  [6] &quot;Seedmass&quot;     &quot;Lifespan&quot;     &quot;F&quot;            &quot;R&quot;            &quot;N&quot;           </span></span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a><span class="co">#&gt; [11] &quot;L&quot;</span></span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a><span class="fu">names</span>(dune_trait_env<span class="sc">$</span>envir)</span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;Sites&quot;  &quot;A1&quot;     &quot;Moist&quot;  &quot;Mag&quot;    &quot;Use&quot;    &quot;Manure&quot; &quot;X&quot;      &quot;Y&quot;     </span></span>
+<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a><span class="co">#&gt;  [9] &quot;X_lot&quot;  &quot;Y_lot&quot;</span></span></code></pre></div>
+<p>There are five morphological traits (from the <code>LEDA</code> trait
+database) and four ecological traits (Ellenberg indicator values for
+moisture, acidity, nutrients and light).</p>
+<p>There are five environmental variables and two sets of two spatial
+coordinates, which are approximately equal. The <code>X</code> and
+<code>Y</code> are the coordinates of the plot. The lot-variables are
+the center of the meadow where the sample has been taken.</p>
+<p>The type of questions that dc-CA is able to address is:</p>
+<ul>
+<li>How many dimenstions are needed to represent the major part of the
+trait-environment relations?</li>
+<li>Is the trait-environment relationship statistically
+significant?</li>
+<li>How many dimensions are statistically significant?</li>
+<li>What is the importance of a variable in a dc-CA axis?</li>
+<li>What is trait-structured variation and which of the trait sets has
+the larger such variation?</li>
+<li>Which of the trait sets (morphological versus ecological) is more
+closely related to the environmental variables?</li>
+</ul>
+<div id="basic-analysis" class="section level2">
+<h2>Basic analysis</h2>
+<p>The next code gives a basic dc-CA analysis. The response matrix or
+data frame must be numerical, with columns representing the species. The
+first variable (<code>Sites</code>) must therefore be deleted.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>Y <span class="ot">&lt;-</span> dune_trait_env<span class="sc">$</span>comm[, <span class="sc">-</span><span class="dv">1</span>] <span class="co"># must delete &quot;Sites&quot;</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">dc_CA</span>(<span class="at">formulaEnv =</span> <span class="sc">~</span> A1 <span class="sc">+</span> Moist <span class="sc">+</span> Use <span class="sc">+</span> Manure <span class="sc">+</span> Mag,</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>             <span class="at">formulaTraits =</span> <span class="sc">~</span> SLA <span class="sc">+</span> Height <span class="sc">+</span> LDMC <span class="sc">+</span> Seedmass <span class="sc">+</span> Lifespan,</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>             <span class="at">response =</span> Y,</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>             <span class="at">dataEnv =</span> dune_trait_env<span class="sc">$</span>envir,</span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>             <span class="at">dataTraits =</span> dune_trait_env<span class="sc">$</span>traits)</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co">#&gt; Step 1: the CCA ordination of the transposed matrix with trait constraints,</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="co">#&gt;         useful in itself and also yielding CWMs of the orthonormalized traits for step 2.</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="co">#&gt; Call: cca(formula = tY ~ SLA + Height + LDMC + Seedmass + Lifespan,</span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="co">#&gt; data = dataTraits)</span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="co">#&gt;               Inertia Proportion Rank</span></span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="co">#&gt; Total          2.3490     1.0000     </span></span>
+<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a><span class="co">#&gt; Constrained    0.6776     0.2885    5</span></span>
+<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a><span class="co">#&gt; Unconstrained  1.6714     0.7115   19</span></span>
+<span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a><span class="co">#&gt; Inertia is scaled Chi-square </span></span>
+<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a><span class="co">#&gt; Eigenvalues for constrained axes:</span></span>
+<span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a><span class="co">#&gt;    CCA1    CCA2    CCA3    CCA4    CCA5 </span></span>
+<span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a><span class="co">#&gt; 0.26839 0.19597 0.12356 0.07003 0.01967 </span></span>
+<span id="cb3-21"><a href="#cb3-21" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-22"><a href="#cb3-22" tabindex="-1"></a><span class="co">#&gt; Eigenvalues for unconstrained axes:</span></span>
+<span id="cb3-23"><a href="#cb3-23" tabindex="-1"></a><span class="co">#&gt;    CA1    CA2    CA3    CA4    CA5    CA6    CA7    CA8 </span></span>
+<span id="cb3-24"><a href="#cb3-24" tabindex="-1"></a><span class="co">#&gt; 0.4386 0.2396 0.1938 0.1750 0.1429 0.1112 0.0854 0.0601 </span></span>
+<span id="cb3-25"><a href="#cb3-25" tabindex="-1"></a><span class="co">#&gt; (Showing 8 of 19 unconstrained eigenvalues)</span></span>
+<span id="cb3-26"><a href="#cb3-26" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-27"><a href="#cb3-27" tabindex="-1"></a><span class="co">#&gt; Step 2: the RDA ordination of CWMs of the orthonormalized traits </span></span>
+<span id="cb3-28"><a href="#cb3-28" tabindex="-1"></a><span class="co">#&gt;         of step 1 with environmental constraints:</span></span>
+<span id="cb3-29"><a href="#cb3-29" tabindex="-1"></a><span class="co">#&gt; Call: rda(formula = out1$CWMs_orthonormal_traits ~ A1 + Moist + Use +</span></span>
+<span id="cb3-30"><a href="#cb3-30" tabindex="-1"></a><span class="co">#&gt; Manure + Mag, data = out1$data$dataEnv)</span></span>
+<span id="cb3-31"><a href="#cb3-31" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-32"><a href="#cb3-32" tabindex="-1"></a><span class="co">#&gt;               Inertia Proportion Rank</span></span>
+<span id="cb3-33"><a href="#cb3-33" tabindex="-1"></a><span class="co">#&gt; Total          0.6776     1.0000     </span></span>
+<span id="cb3-34"><a href="#cb3-34" tabindex="-1"></a><span class="co">#&gt; Constrained    0.4454     0.6573    5</span></span>
+<span id="cb3-35"><a href="#cb3-35" tabindex="-1"></a><span class="co">#&gt; Unconstrained  0.2322     0.3427    5</span></span>
+<span id="cb3-36"><a href="#cb3-36" tabindex="-1"></a><span class="co">#&gt; Inertia is variance </span></span>
+<span id="cb3-37"><a href="#cb3-37" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-38"><a href="#cb3-38" tabindex="-1"></a><span class="co">#&gt; Eigenvalues for constrained axes:</span></span>
+<span id="cb3-39"><a href="#cb3-39" tabindex="-1"></a><span class="co">#&gt;    RDA1    RDA2    RDA3    RDA4    RDA5 </span></span>
+<span id="cb3-40"><a href="#cb3-40" tabindex="-1"></a><span class="co">#&gt; 0.23680 0.10903 0.05934 0.03792 0.00233 </span></span>
+<span id="cb3-41"><a href="#cb3-41" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-42"><a href="#cb3-42" tabindex="-1"></a><span class="co">#&gt; Eigenvalues for unconstrained axes:</span></span>
+<span id="cb3-43"><a href="#cb3-43" tabindex="-1"></a><span class="co">#&gt;     PC1     PC2     PC3     PC4     PC5 </span></span>
+<span id="cb3-44"><a href="#cb3-44" tabindex="-1"></a><span class="co">#&gt; 0.12017 0.05836 0.03455 0.01337 0.00575 </span></span>
+<span id="cb3-45"><a href="#cb3-45" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-46"><a href="#cb3-46" tabindex="-1"></a><span class="co">#&gt; mean, sd, VIF and canonical coefficients with their optimistic [!] t-values:</span></span>
+<span id="cb3-47"><a href="#cb3-47" tabindex="-1"></a><span class="co">#&gt;         Avg    SDS    VIF   Regr1   tval1</span></span>
+<span id="cb3-48"><a href="#cb3-48" tabindex="-1"></a><span class="co">#&gt; A1     4.85 9.4989 1.6967 -0.0605 -0.9172</span></span>
+<span id="cb3-49"><a href="#cb3-49" tabindex="-1"></a><span class="co">#&gt; Moist  2.90 7.8613 1.7658  0.3250  4.8293</span></span>
+<span id="cb3-50"><a href="#cb3-50" tabindex="-1"></a><span class="co">#&gt; Use    1.90 3.4351 1.7825  0.0219  0.3239</span></span>
+<span id="cb3-51"><a href="#cb3-51" tabindex="-1"></a><span class="co">#&gt; Manure 1.75 6.4614 9.3847 -0.1444 -0.9306</span></span>
+<span id="cb3-52"><a href="#cb3-52" tabindex="-1"></a><span class="co">#&gt; MagBF  0.15 1.5969 4.5016 -0.0475 -0.4421</span></span>
+<span id="cb3-53"><a href="#cb3-53" tabindex="-1"></a><span class="co">#&gt; MagHF  0.25 1.9365 2.6715 -0.0156 -0.1890</span></span>
+<span id="cb3-54"><a href="#cb3-54" tabindex="-1"></a><span class="co">#&gt; MagNM  0.30 2.0494 9.5666  0.1622  1.0352</span></span>
+<span id="cb3-55"><a href="#cb3-55" tabindex="-1"></a><span class="co">#&gt;                        Avg     SDS    VIF   Regr1   tval1</span></span>
+<span id="cb3-56"><a href="#cb3-56" tabindex="-1"></a><span class="co">#&gt; SLA                24.6468  6.3438 1.1888 -0.8196 -3.6933</span></span>
+<span id="cb3-57"><a href="#cb3-57" tabindex="-1"></a><span class="co">#&gt; Height             25.1272 15.6848 1.3033 -0.1598 -0.6877</span></span>
+<span id="cb3-58"><a href="#cb3-58" tabindex="-1"></a><span class="co">#&gt; LDMC              244.5084 70.9729 1.1791 -0.0562 -0.2542</span></span>
+<span id="cb3-59"><a href="#cb3-59" tabindex="-1"></a><span class="co">#&gt; Seedmass            0.6543  0.6688 1.0784 -0.7586 -3.5896</span></span>
+<span id="cb3-60"><a href="#cb3-60" tabindex="-1"></a><span class="co">#&gt; Lifespanperennial   0.9607  0.1944 1.0964  0.1006  0.4722</span></span>
+<span id="cb3-61"><a href="#cb3-61" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-62"><a href="#cb3-62" tabindex="-1"></a><span class="co">#&gt;                weighted variance</span></span>
+<span id="cb3-63"><a href="#cb3-63" tabindex="-1"></a><span class="co">#&gt; total                      2.349</span></span>
+<span id="cb3-64"><a href="#cb3-64" tabindex="-1"></a><span class="co">#&gt; traits_explain             0.678</span></span>
+<span id="cb3-65"><a href="#cb3-65" tabindex="-1"></a><span class="co">#&gt; constraintsTE              0.445</span></span>
+<span id="cb3-66"><a href="#cb3-66" tabindex="-1"></a><span class="co">#&gt; attr(,&quot;meaning&quot;)</span></span>
+<span id="cb3-67"><a href="#cb3-67" tabindex="-1"></a><span class="co">#&gt;                meaning                                                              </span></span>
+<span id="cb3-68"><a href="#cb3-68" tabindex="-1"></a><span class="co">#&gt; total          &quot;total inertia&quot;                                                      </span></span>
+<span id="cb3-69"><a href="#cb3-69" tabindex="-1"></a><span class="co">#&gt; traits_explain &quot;trait-constrained inertia&quot;                                          </span></span>
+<span id="cb3-70"><a href="#cb3-70" tabindex="-1"></a><span class="co">#&gt; constraintsTE  &quot;trait-constrained inertia explained by the predictors in formulaEnv&quot;</span></span></code></pre></div>
+<p>In <code>douconca</code>, dc-CA is calculated in two steps that
+provide useful information each. Step 1 of the dc-CA algorithm
+summarizes the canonical correspondence analysis (CCA) of the transposed
+response matrix on to the trait data using
+<code>formulaTraits = ~ SLA + Height + LDMC + Seedmass + Lifespan</code>.
+The morphological traits in this formula explain 28.85% of the total
+inertia (variance) in the abundance data <code>Y</code>. This inertia
+(0.6776) is called the trait-structured variation. Inertia is in general
+a weighted variance, but in this case it is thus unweighted as sites
+have equal weight in the analysis, because
+<code>divideBySiteTotals</code> is true by defaults. Formally, it is the
+total (unweighted) variance in the community weighted means of
+orthonormalized traits (the traits are orthonormalized in Step 1). The
+trait-structured variation is further analyzed in Step 2 using
+redundancy analysis (RDA). Step 2 shows that 65.73% of this variation
+can be explained by the environmental variables using
+<code>formulaEnv = ~ A1 + Moist + Use + Manure + Mag</code>. The
+constrained axes of this RDA are also the dc-CA eigenvalues:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>mod<span class="sc">$</span>eigenvalues</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="co">#&gt;      dcCA1      dcCA2      dcCA3      dcCA4      dcCA5 </span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co">#&gt; 0.23680387 0.10903220 0.05933626 0.03791909 0.00232876</span></span></code></pre></div>
+<p>The first axis explains 53% of the trait-environment variance and
+this axis is dominated by moisture and by SLA and Seedmass, as judged by
+the size of their regression coefficient and (optimistic) t-value on
+this axis in the print of the model. The default <code>plot</code> shows
+the intra-set correlations of the variables with the axis, but t-values
+can be visualized with</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">plot</span>(mod,<span class="at">gradient_description =</span> <span class="st">&quot;t&quot;</span>)</span></code></pre></div>
+<p><img role="img" src="data:image/png;base64,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" /><!-- --></p>
+</div>
+<div id="statistical-testing" class="section level2">
+<h2>Statistical testing</h2>
+<p>There are two-ways to statistically test the model: (1) the omnibus
+test (using all five dimensions) is obtained with
+<code>anova(mod)</code>, giving a P-value of about 0.02 and (2) a test
+per dc-CA axis, obtained by</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">anova</span>(mod, <span class="at">by =</span> <span class="st">&quot;axis&quot;</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="co">#&gt; $species</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co">#&gt; Species-level permutation test using dc-CA</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="co">#&gt; Model: dc_CA(formulaEnv = ~A1 + Moist + Use + Manure + Mag, formulaTraits = ~SLA + Height + LDMC + Seedmass + Lifespan, response = Y, dataEnv = dune_trait_env$envir, dataTraits = dune_trait_env$traits) </span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="co">#&gt; Residualized predictor permutation</span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="co">#&gt;          df ChiSquare       R2      F Pr(&gt;F)  </span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="co">#&gt; dcCA1     1   0.23680 0.179002 0.9593  0.087 .</span></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="co">#&gt; dcCA2     1   0.10903 0.082419 0.6137  0.476  </span></span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a><span class="co">#&gt; dcCA3     1   0.05934 0.044853 0.4741  0.760  </span></span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a><span class="co">#&gt; dcCA4     1   0.03792 0.028663 0.4741  0.816  </span></span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="co">#&gt; dcCA5     1   0.00233 0.001760 0.0584  1.000  </span></span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="co">#&gt; Residual 22   0.87749                         </span></span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a><span class="co">#&gt; $sites</span></span>
+<span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a><span class="co">#&gt;       Df ChiSquare      R2       F Pr(&gt;F)    </span></span>
+<span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a><span class="co">#&gt; dcCA1  1  0.236804 0.34946 14.2776  0.001 ***</span></span>
+<span id="cb6-21"><a href="#cb6-21" tabindex="-1"></a><span class="co">#&gt; dcCA2  1  0.109032 0.16090  6.5739  0.075 .  </span></span>
+<span id="cb6-22"><a href="#cb6-22" tabindex="-1"></a><span class="co">#&gt; dcCA3  1  0.059336 0.08757  3.5776  0.409    </span></span>
+<span id="cb6-23"><a href="#cb6-23" tabindex="-1"></a><span class="co">#&gt; dcCA4  1  0.037919 0.05596  2.2863  0.676    </span></span>
+<span id="cb6-24"><a href="#cb6-24" tabindex="-1"></a><span class="co">#&gt; dcCA5  1  0.002329 0.00344  0.1404  1.000    </span></span>
+<span id="cb6-25"><a href="#cb6-25" tabindex="-1"></a><span class="co">#&gt; dcCA6 14  0.232199                           </span></span>
+<span id="cb6-26"><a href="#cb6-26" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb6-27"><a href="#cb6-27" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb6-28"><a href="#cb6-28" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-29"><a href="#cb6-29" tabindex="-1"></a><span class="co">#&gt; $max</span></span>
+<span id="cb6-30"><a href="#cb6-30" tabindex="-1"></a><span class="co">#&gt; Max test combining the community- and species- level tests </span></span>
+<span id="cb6-31"><a href="#cb6-31" tabindex="-1"></a><span class="co">#&gt; Model: dc_CA(formulaEnv = ~A1 + Moist + Use + Manure + Mag, formulaTraits = ~SLA + Height + LDMC + Seedmass + Lifespan, response = Y, dataEnv = dune_trait_env$envir, dataTraits = dune_trait_env$traits) </span></span>
+<span id="cb6-32"><a href="#cb6-32" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-33"><a href="#cb6-33" tabindex="-1"></a><span class="co">#&gt; Taken from the species-level test:</span></span>
+<span id="cb6-34"><a href="#cb6-34" tabindex="-1"></a><span class="co">#&gt; Residualized predictor permutation</span></span>
+<span id="cb6-35"><a href="#cb6-35" tabindex="-1"></a><span class="co">#&gt; Permutation: free</span></span>
+<span id="cb6-36"><a href="#cb6-36" tabindex="-1"></a><span class="co">#&gt; Number of permutations: 999</span></span>
+<span id="cb6-37"><a href="#cb6-37" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-38"><a href="#cb6-38" tabindex="-1"></a><span class="co">#&gt;          df ChiSquare       R2      F Pr(&gt;F)  </span></span>
+<span id="cb6-39"><a href="#cb6-39" tabindex="-1"></a><span class="co">#&gt; dcCA1     1   0.23680 0.179002 0.9593  0.087 .</span></span>
+<span id="cb6-40"><a href="#cb6-40" tabindex="-1"></a><span class="co">#&gt; dcCA2     1   0.10903 0.082419 0.6137  0.476  </span></span>
+<span id="cb6-41"><a href="#cb6-41" tabindex="-1"></a><span class="co">#&gt; dcCA3     1   0.05934 0.044853 0.4741  0.760  </span></span>
+<span id="cb6-42"><a href="#cb6-42" tabindex="-1"></a><span class="co">#&gt; dcCA4     1   0.03792 0.028663 0.4741  0.816  </span></span>
+<span id="cb6-43"><a href="#cb6-43" tabindex="-1"></a><span class="co">#&gt; dcCA5     1   0.00233 0.001760 0.0584  1.000  </span></span>
+<span id="cb6-44"><a href="#cb6-44" tabindex="-1"></a><span class="co">#&gt; Residual 22   0.87749                         </span></span>
+<span id="cb6-45"><a href="#cb6-45" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb6-46"><a href="#cb6-46" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
+<p>In the test per axis, the first axis has P-values of 0.09 and 0.001
+at the species- and site-level, respectively, so that the P-value of the
+max test is 0.09. A little more explanation may be instructive. The
+species-level test consists of testing the (weighted) regression of the
+species-niche-centroids with respect to orthonormalized environmental
+variables against the traits. The site-level test consists of testing
+the (in this case, unweighted) regression of the community-weighted
+means of orthonormalized traits against the environmental variables.
+Both tests are carried out by permutation, the first by permuting
+species in the trait data, the second by permuting sites in the
+environmental data. A new dc-CA is carried out for each permuted data
+set. For a full description see under Details in the help system.</p>
+</div>
+<div id="fitted-values-and-predictions" class="section level2">
+<h2>Fitted values and predictions</h2>
+<p>There are three kinds of fitted values (and of predictions for new
+data):</p>
+<ul>
+<li>fitted traits per site, obtained with
+<code>predict(mod, type = &quot;traits&quot; )</code></li>
+<li>fitted environmental values per species, obtained with
+<code>predict(mod, type = &quot;env&quot;)</code></li>
+<li>fitted abundances, obtained with
+<code>predict(mod, type = &quot;response&quot; )</code></li>
+</ul>
+<p>The fitted traits per site are simply fitted community-weighted means
+and the fitted environmental values are fitted species-niche centroids.
+Note that 10% of the fitted abundance values is negative in our example.
+Negative values indicate likely absences or low abundance values of
+species with the specified traits and environmental values.</p>
+</div>
+</div>
+<div id="which-set-of-traits-is-most-closely-related-to-abundance-and-to-the-environment" class="section level1">
+<h1>Which set of traits is most closely related to abundance and to the
+environment?</h1>
+<p>In this section, we pose the question whether the set of
+morphological (functional) traits is more or less related to species
+abundance and to the environmental variables than the set of ecological
+traits.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>mod_e <span class="ot">&lt;-</span>  <span class="fu">dc_CA</span>(<span class="at">formulaEnv =</span> <span class="sc">~</span> A1 <span class="sc">+</span> Moist <span class="sc">+</span> Manure <span class="sc">+</span> Use <span class="sc">+</span> Mag,</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>                <span class="at">formulaTraits =</span> <span class="sc">~</span> F <span class="sc">+</span> R<span class="sc">+</span> N <span class="sc">+</span> L,</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>                <span class="at">response =</span> Y,</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>                <span class="at">dataEnv =</span> dune_trait_env<span class="sc">$</span>envir,</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>                <span class="at">dataTraits =</span> dune_trait_env<span class="sc">$</span>traits)</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="co">#&gt; Step 1: the CCA ordination of the transposed matrix with trait constraints,</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co">#&gt;         useful in itself and also yielding CWMs of the orthonormalized traits for step 2.</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="co">#&gt; Call: cca(formula = tY ~ F + R + N + L, data = dataTraits)</span></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="co">#&gt;               Inertia Proportion Rank</span></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="co">#&gt; Total          2.3490     1.0000     </span></span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="co">#&gt; Constrained    0.8701     0.3704    4</span></span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="co">#&gt; Unconstrained  1.4789     0.6296   19</span></span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="co">#&gt; Inertia is scaled Chi-square </span></span>
+<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a><span class="co">#&gt; Eigenvalues for constrained axes:</span></span>
+<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a><span class="co">#&gt;   CCA1   CCA2   CCA3   CCA4 </span></span>
+<span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a><span class="co">#&gt; 0.4771 0.3122 0.0580 0.0228 </span></span>
+<span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a><span class="co">#&gt; Eigenvalues for unconstrained axes:</span></span>
+<span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a><span class="co">#&gt;     CA1     CA2     CA3     CA4     CA5     CA6     CA7     CA8 </span></span>
+<span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a><span class="co">#&gt; 0.27842 0.24457 0.18230 0.16241 0.14740 0.09916 0.09167 0.06649 </span></span>
+<span id="cb7-23"><a href="#cb7-23" tabindex="-1"></a><span class="co">#&gt; (Showing 8 of 19 unconstrained eigenvalues)</span></span>
+<span id="cb7-24"><a href="#cb7-24" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb7-25"><a href="#cb7-25" tabindex="-1"></a><span class="co">#&gt; Step 2: the RDA ordination of CWMs of the orthonormalized traits </span></span>
+<span id="cb7-26"><a href="#cb7-26" tabindex="-1"></a><span class="co">#&gt;         of step 1 with environmental constraints:</span></span>
+<span id="cb7-27"><a href="#cb7-27" tabindex="-1"></a><span class="co">#&gt; Call: rda(formula = out1$CWMs_orthonormal_traits ~ A1 + Moist + Manure</span></span>
+<span id="cb7-28"><a href="#cb7-28" tabindex="-1"></a><span class="co">#&gt; + Use + Mag, data = out1$data$dataEnv)</span></span>
+<span id="cb7-29"><a href="#cb7-29" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb7-30"><a href="#cb7-30" tabindex="-1"></a><span class="co">#&gt;               Inertia Proportion Rank</span></span>
+<span id="cb7-31"><a href="#cb7-31" tabindex="-1"></a><span class="co">#&gt; Total          0.8701     1.0000     </span></span>
+<span id="cb7-32"><a href="#cb7-32" tabindex="-1"></a><span class="co">#&gt; Constrained    0.6331     0.7277    4</span></span>
+<span id="cb7-33"><a href="#cb7-33" tabindex="-1"></a><span class="co">#&gt; Unconstrained  0.2369     0.2723    4</span></span>
+<span id="cb7-34"><a href="#cb7-34" tabindex="-1"></a><span class="co">#&gt; Inertia is variance </span></span>
+<span id="cb7-35"><a href="#cb7-35" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb7-36"><a href="#cb7-36" tabindex="-1"></a><span class="co">#&gt; Eigenvalues for constrained axes:</span></span>
+<span id="cb7-37"><a href="#cb7-37" tabindex="-1"></a><span class="co">#&gt;   RDA1   RDA2   RDA3   RDA4 </span></span>
+<span id="cb7-38"><a href="#cb7-38" tabindex="-1"></a><span class="co">#&gt; 0.3684 0.2452 0.0141 0.0054 </span></span>
+<span id="cb7-39"><a href="#cb7-39" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb7-40"><a href="#cb7-40" tabindex="-1"></a><span class="co">#&gt; Eigenvalues for unconstrained axes:</span></span>
+<span id="cb7-41"><a href="#cb7-41" tabindex="-1"></a><span class="co">#&gt;     PC1     PC2     PC3     PC4 </span></span>
+<span id="cb7-42"><a href="#cb7-42" tabindex="-1"></a><span class="co">#&gt; 0.14787 0.06377 0.01573 0.00954 </span></span>
+<span id="cb7-43"><a href="#cb7-43" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb7-44"><a href="#cb7-44" tabindex="-1"></a><span class="co">#&gt; mean, sd, VIF and canonical coefficients with their optimistic [!] t-values:</span></span>
+<span id="cb7-45"><a href="#cb7-45" tabindex="-1"></a><span class="co">#&gt;         Avg    SDS    VIF   Regr1   tval1</span></span>
+<span id="cb7-46"><a href="#cb7-46" tabindex="-1"></a><span class="co">#&gt; A1     4.85 9.4989 1.6967  0.1527  1.3122</span></span>
+<span id="cb7-47"><a href="#cb7-47" tabindex="-1"></a><span class="co">#&gt; Moist  2.90 7.8613 1.7658  0.4584  3.8618</span></span>
+<span id="cb7-48"><a href="#cb7-48" tabindex="-1"></a><span class="co">#&gt; Manure 1.75 6.4614 9.3847  0.0243  0.0888</span></span>
+<span id="cb7-49"><a href="#cb7-49" tabindex="-1"></a><span class="co">#&gt; Use    1.90 3.4351 1.7825  0.0886  0.7432</span></span>
+<span id="cb7-50"><a href="#cb7-50" tabindex="-1"></a><span class="co">#&gt; MagBF  0.15 1.5969 4.5016 -0.0086 -0.0452</span></span>
+<span id="cb7-51"><a href="#cb7-51" tabindex="-1"></a><span class="co">#&gt; MagHF  0.25 1.9365 2.6715  0.0136  0.0930</span></span>
+<span id="cb7-52"><a href="#cb7-52" tabindex="-1"></a><span class="co">#&gt; MagNM  0.30 2.0494 9.5666  0.1136  0.4110</span></span>
+<span id="cb7-53"><a href="#cb7-53" tabindex="-1"></a><span class="co">#&gt;      Avg    SDS    VIF   Regr1   tval1</span></span>
+<span id="cb7-54"><a href="#cb7-54" tabindex="-1"></a><span class="co">#&gt; F 6.1126 1.6685 1.1323  0.8158  6.0720</span></span>
+<span id="cb7-55"><a href="#cb7-55" tabindex="-1"></a><span class="co">#&gt; R 5.8061 1.1894 1.7564 -0.1812 -1.0830</span></span>
+<span id="cb7-56"><a href="#cb7-56" tabindex="-1"></a><span class="co">#&gt; N 5.1674 1.6303 1.7822 -0.1905 -1.1304</span></span>
+<span id="cb7-57"><a href="#cb7-57" tabindex="-1"></a><span class="co">#&gt; L 7.3839 0.8774 1.1378  0.3043  2.2594</span></span>
+<span id="cb7-58"><a href="#cb7-58" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb7-59"><a href="#cb7-59" tabindex="-1"></a><span class="co">#&gt;                weighted variance</span></span>
+<span id="cb7-60"><a href="#cb7-60" tabindex="-1"></a><span class="co">#&gt; total                      2.349</span></span>
+<span id="cb7-61"><a href="#cb7-61" tabindex="-1"></a><span class="co">#&gt; traits_explain             0.870</span></span>
+<span id="cb7-62"><a href="#cb7-62" tabindex="-1"></a><span class="co">#&gt; constraintsTE              0.633</span></span>
+<span id="cb7-63"><a href="#cb7-63" tabindex="-1"></a><span class="co">#&gt; attr(,&quot;meaning&quot;)</span></span>
+<span id="cb7-64"><a href="#cb7-64" tabindex="-1"></a><span class="co">#&gt;                meaning                                                              </span></span>
+<span id="cb7-65"><a href="#cb7-65" tabindex="-1"></a><span class="co">#&gt; total          &quot;total inertia&quot;                                                      </span></span>
+<span id="cb7-66"><a href="#cb7-66" tabindex="-1"></a><span class="co">#&gt; traits_explain &quot;trait-constrained inertia&quot;                                          </span></span>
+<span id="cb7-67"><a href="#cb7-67" tabindex="-1"></a><span class="co">#&gt; constraintsTE  &quot;trait-constrained inertia explained by the predictors in formulaEnv&quot;</span></span></code></pre></div>
+<p>The entry <code>traits_explain</code> is 0.87, which is the variance
+in the abundance data that is explained by the traits. It can directly
+be compared to the corresponding entry in the previous model, which is
+0.678. The entry <code>constraintsTE</code> is the variance in abundance
+data that is explained by traits and environmental variables jointly.
+Its value in the second model is higher than that in the first. On
+closer examination of the results, the second eigenvalue of the last
+model is even higher than the first one of the first model and, indeed,
+the first two dc-CA axes are significant as can be seen from an
+<code>anova</code>:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">anova</span>(mod_e, <span class="at">by =</span> <span class="st">&quot;axis&quot;</span>)<span class="sc">$</span>max</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="co">#&gt; Max test combining the community- and species- level tests </span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="co">#&gt; Model: dc_CA(formulaEnv = ~A1 + Moist + Manure + Use + Mag, formulaTraits = ~F + R + N + L, response = Y, dataEnv = dune_trait_env$envir, dataTraits = dune_trait_env$traits) </span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co">#&gt; Taken from the community-level test:</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="co">#&gt; Residualized response permutation using vegan::rda</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="co">#&gt; which performs well in this equi-weight case.</span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="co">#&gt;       Df ChiSquare      R2       F Pr(&gt;F)   </span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="co">#&gt; dcCA1  1   0.36835 0.42337 23.3220  0.002 **</span></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="co">#&gt; dcCA2  1   0.24525 0.28188 15.5276  0.017 * </span></span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="co">#&gt; dcCA3  1   0.01413 0.01624  0.8944  0.996   </span></span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="co">#&gt; dcCA4  1   0.00541 0.00622  0.3427  1.000   </span></span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="co">#&gt; dcCA5 15   0.23691                          </span></span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
+<p>The fourth-corner correlation of the best linear combination of the
+ecological traits with the best linear combination of the environmental
+variables is</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">sqrt</span>(mod_e<span class="sc">$</span>eigenvalues[<span class="dv">1</span>]), <span class="dv">2</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co">#&gt; dcCA1 </span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="co">#&gt;  0.61</span></span></code></pre></div>
+<p>compared to 0.49 for the best linear combination of the morphological
+traits. In conclusion, the ecological traits explain more of the
+abundance data and are closer related to the environmental
+variables.</p>
+</div>
+<div id="do-the-morphological-traits-contribute-after-accounting-for-the-ecological-traits" class="section level1">
+<h1>Do the morphological traits contribute after accounting for the
+ecological traits?</h1>
+<p>Do the morphological traits carry important additional information on
+the species (beyond their ecological traits) for understanding which
+species occur where? (i.e. for understanding the species-environment
+relationships). To address this question, specify the ecological traits
+as <code>Condition</code> in the trait formula and perform an
+<code>anova</code> of the resulting model.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>mod_mGe <span class="ot">&lt;-</span>  <span class="fu">dc_CA</span>(<span class="at">formulaEnv =</span> <span class="sc">~</span> A1 <span class="sc">+</span> Moist <span class="sc">+</span> Manure <span class="sc">+</span> Use <span class="sc">+</span> Mag,</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>                 <span class="at">formulaTraits =</span> </span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>                   <span class="sc">~</span> SLA <span class="sc">+</span> Height <span class="sc">+</span> LDMC <span class="sc">+</span> Seedmass <span class="sc">+</span> Lifespan <span class="sc">+</span> <span class="fu">Condition</span>(F<span class="sc">+</span>R<span class="sc">+</span>N<span class="sc">+</span>L),</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>                 <span class="at">response =</span> Y,</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>                 <span class="at">dataEnv =</span> dune_trait_env<span class="sc">$</span>envir,</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>                 <span class="at">dataTraits =</span> dune_trait_env<span class="sc">$</span>traits, <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="fu">anova</span>(mod_mGe, <span class="at">by=</span> <span class="st">&quot;axis&quot;</span>)<span class="sc">$</span>max</span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a><span class="co">#&gt; Max test combining the community- and species- level tests </span></span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a><span class="co">#&gt; Model: dc_CA(formulaEnv = ~A1 + Moist + Manure + Use + Mag, formulaTraits = ~SLA + Height + LDMC + Seedmass + Lifespan + Condition(F + R + N + L), response = Y, dataEnv = dune_trait_env$envir, dataTraits = dune_trait_env$traits, verbose = FALSE) </span></span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a><span class="co">#&gt; Taken from the species-level test:</span></span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a><span class="co">#&gt; Residualized predictor permutation</span></span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a><span class="co">#&gt; Permutation: free</span></span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a><span class="co">#&gt; Number of permutations: 999</span></span>
+<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a><span class="co">#&gt;          df ChiSquare       R2      F Pr(&gt;F)</span></span>
+<span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a><span class="co">#&gt; dcCA1     1   0.09333 0.135306 0.5633  0.183</span></span>
+<span id="cb10-18"><a href="#cb10-18" tabindex="-1"></a><span class="co">#&gt; dcCA2     1   0.07101 0.102951 0.6082  0.280</span></span>
+<span id="cb10-19"><a href="#cb10-19" tabindex="-1"></a><span class="co">#&gt; dcCA3     1   0.03381 0.049017 0.4126  0.837</span></span>
+<span id="cb10-20"><a href="#cb10-20" tabindex="-1"></a><span class="co">#&gt; dcCA4     1   0.00629 0.009115 0.1166  1.000</span></span>
+<span id="cb10-21"><a href="#cb10-21" tabindex="-1"></a><span class="co">#&gt; dcCA5     1   0.00259 0.003761 0.0967  1.000</span></span>
+<span id="cb10-22"><a href="#cb10-22" tabindex="-1"></a><span class="co">#&gt; Residual 18   0.48274</span></span></code></pre></div>
+<p>As jugded by the test of significance by axes, the morphological
+traits contribute little.</p>
+</div>
+<div id="one-trait-cwm-regression-without-inflated-type-i-error." class="section level1">
+<h1>One trait: CWM regression without inflated type I error.</h1>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>CWM regression is know to suffer from serious type I error inflation
+in statistical testing <span class="citation">(<a href="#ref-peres2017linking">Peres-Neto, Dray, and Ter Braak 2017</a>;
+<a href="#ref-lepvs2023differences">Lepš and De Bello 2023</a>)</span>.
+This section shows how to perform CWM regression of a single trait using
+dc-CA with a <code>max</code> test to guard against type I error
+inflation. This test does not suffer from the, sometimes extreme,
+conservativeness of the ZS (Zelený &amp; Schaffers) modified test <span class="citation">(<a href="#ref-Braak2018simple">Ter Braak, Peres-Neto,
+and Dray 2018</a>; <a href="#ref-lepvs2023differences">Lepš and De Bello
+2023</a>)</span>.</p>
+<p>We also show the equivalence of the site-level test with that of a
+CWM-regression and the equivalence of the dc-CA and CWM regression
+coefficients. On the way, we give examples of the <code>scores</code>
+and <code>fCWM_SNC</code> functions in the <code>douconca</code>
+package.</p>
+</div>
+<div id="testing-the-relationship-between-ldmc-and-the-environmental-variables" class="section level2">
+<h2>Testing the relationship between LDMC and the environmental
+variables</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>mod_LDMC <span class="ot">&lt;-</span> <span class="fu">dc_CA</span>(<span class="at">formulaEnv =</span> <span class="sc">~</span> A1 <span class="sc">+</span> Moist <span class="sc">+</span> Manure <span class="sc">+</span> Use <span class="sc">+</span> Mag,</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>                   <span class="at">formulaTraits =</span> <span class="sc">~</span> LDMC,</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>                   <span class="at">response =</span> Y, </span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>                   <span class="at">dataEnv =</span> dune_trait_env<span class="sc">$</span>envir,</span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>                   <span class="at">dataTraits =</span> dune_trait_env<span class="sc">$</span>trait, <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a><span class="fu">anova</span>(mod_LDMC)</span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a><span class="co">#&gt; $species</span></span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a><span class="co">#&gt; Species-level permutation test using dc-CA</span></span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a><span class="co">#&gt; Model: dc_CA(formulaEnv = ~A1 + Moist + Manure + Use + Mag, formulaTraits = ~LDMC, response = Y, dataEnv = dune_trait_env$envir, dataTraits = dune_trait_env$trait, verbose = FALSE) </span></span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a><span class="co">#&gt; Residualized predictor permutation</span></span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a><span class="co">#&gt;          df ChiSquare       R2      F Pr(&gt;F)</span></span>
+<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a><span class="co">#&gt; dcCA      1   0.05605 0.042368 1.1503  0.396</span></span>
+<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a><span class="co">#&gt; Residual 26   1.26686                       </span></span>
+<span id="cb11-15"><a href="#cb11-15" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb11-16"><a href="#cb11-16" tabindex="-1"></a><span class="co">#&gt; $sites</span></span>
+<span id="cb11-17"><a href="#cb11-17" tabindex="-1"></a><span class="co">#&gt;       Df ChiSquare      R2      F Pr(&gt;F)  </span></span>
+<span id="cb11-18"><a href="#cb11-18" tabindex="-1"></a><span class="co">#&gt; dcCA1  7  0.056048 0.67074 3.4922  0.028 *</span></span>
+<span id="cb11-19"><a href="#cb11-19" tabindex="-1"></a><span class="co">#&gt; dcCA2 12  0.027513                        </span></span>
+<span id="cb11-20"><a href="#cb11-20" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb11-21"><a href="#cb11-21" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb11-22"><a href="#cb11-22" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb11-23"><a href="#cb11-23" tabindex="-1"></a><span class="co">#&gt; $max</span></span>
+<span id="cb11-24"><a href="#cb11-24" tabindex="-1"></a><span class="co">#&gt; Max test combining the community- and species- level tests </span></span>
+<span id="cb11-25"><a href="#cb11-25" tabindex="-1"></a><span class="co">#&gt; Model: dc_CA(formulaEnv = ~A1 + Moist + Manure + Use + Mag, formulaTraits = ~LDMC, response = Y, dataEnv = dune_trait_env$envir, dataTraits = dune_trait_env$trait, verbose = FALSE) </span></span>
+<span id="cb11-26"><a href="#cb11-26" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb11-27"><a href="#cb11-27" tabindex="-1"></a><span class="co">#&gt; Taken from the species-level test:</span></span>
+<span id="cb11-28"><a href="#cb11-28" tabindex="-1"></a><span class="co">#&gt; Residualized predictor permutation</span></span>
+<span id="cb11-29"><a href="#cb11-29" tabindex="-1"></a><span class="co">#&gt; Permutation: free</span></span>
+<span id="cb11-30"><a href="#cb11-30" tabindex="-1"></a><span class="co">#&gt; Number of permutations: 999</span></span>
+<span id="cb11-31"><a href="#cb11-31" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb11-32"><a href="#cb11-32" tabindex="-1"></a><span class="co">#&gt;          df ChiSquare       R2      F Pr(&gt;F)</span></span>
+<span id="cb11-33"><a href="#cb11-33" tabindex="-1"></a><span class="co">#&gt; dcCA      1   0.05605 0.042368 1.1503  0.396</span></span>
+<span id="cb11-34"><a href="#cb11-34" tabindex="-1"></a><span class="co">#&gt; Residual 26   1.26686</span></span></code></pre></div>
+<p>The P-values of the species-level and site-level permutation tests
+are 0.396 and 0.028, respectively, so that the final P-value is 0.396.
+There is thus no evidence that the trait LDMC is related to the
+environmental variables in the model.</p>
+<p>We now show that performing CWM-regression only would lead to the
+opposite conclusion. For this, we first calculate the CWMs of LDMC,
+using the function <code>fCWM_SNC</code>, the arguments of which are
+similar to that of the <code>dc_CA</code> function.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>CWMSNC_LDMC <span class="ot">&lt;-</span> <span class="fu">fCWM_SNC</span>(<span class="at">formulaEnv =</span> <span class="sc">~</span> A1 <span class="sc">+</span> Moist <span class="sc">+</span> Manure <span class="sc">+</span> Use <span class="sc">+</span> Mag,</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>                      <span class="at">formulaTraits =</span> <span class="sc">~</span> LDMC,</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>                      <span class="at">response =</span> Y, </span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>                      <span class="at">dataEnv =</span> dune_trait_env<span class="sc">$</span>envir,</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>                      <span class="at">dataTraits =</span> dune_trait_env<span class="sc">$</span>trait, <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p>The result, <code>CWMSNC_LDMC</code>, is a list containing the CWMs
+of LDMC, among other items. We combine the (community-weighted) mean
+LDMC to the environmental data, apply linear regresion and compare the
+model with the null model using <code>anova</code>.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>envCWM <span class="ot">&lt;-</span> <span class="fu">cbind</span>(dune_trait_env<span class="sc">$</span>envir, CWMSNC_LDMC<span class="sc">$</span>CWM)</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>lmLDMC <span class="ot">&lt;-</span> <span class="fu">lm</span>(LDMC <span class="sc">~</span> A1 <span class="sc">+</span> Moist <span class="sc">+</span> Manure <span class="sc">+</span> Use <span class="sc">+</span> Mag, <span class="at">data =</span> envCWM)</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="fu">anova</span>(lmLDMC, <span class="fu">lm</span>(LDMC <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> envCWM))</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="co">#&gt; Analysis of Variance Table</span></span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a><span class="co">#&gt; Model 1: LDMC ~ A1 + Moist + Manure + Use + Mag</span></span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a><span class="co">#&gt; Model 2: LDMC ~ 1</span></span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a><span class="co">#&gt;   Res.Df    RSS Df Sum of Sq      F Pr(&gt;F)  </span></span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a><span class="co">#&gt; 1     12 2771.8                             </span></span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a><span class="co">#&gt; 2     19 8418.3 -7   -5646.5 3.4922 0.0279 *</span></span>
+<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
+<p>resulting in a P-value of 0.0279, which is in agreement with the
+P-value of the site-level permutation test of this model. CWM-regression
+of LDMC shows evidence for a relationship with the environmental
+variables whereas there is in fact very little evidence as shown by
+dc-CA.</p>
+</div>
+<div id="the-coefficients-of-a-cwm-regression-are-proportional-to-those-of-dc-ca" class="section level2">
+<h2>The coefficients of a CWM-regression are proportional to those of
+dc-CA</h2>
+<p>The introduction said that dc-CA extends CWM-regression to multiple
+traits. We now show that the regression coefficients issued by dc-CA
+with a single trait are, up to a scaling constant, identical to those of
+a linear CWM-regression of this trait.</p>
+<p>We first extract the regression coefficients from the dc-CA model
+using the <code>scores</code> function. The second line calculates the
+regression coefficients by dividing the standardize regression
+coefficients from <code>dc_CA</code> by the standard deviation of each
+environmental variable.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>(regr_table <span class="ot">&lt;-</span> <span class="fu">scores</span>(mod_LDMC, <span class="at">display =</span> <span class="st">&quot;reg&quot;</span>))</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="co">#&gt;         Avg      SDS      VIF       dcCA1</span></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="co">#&gt; A1     4.85 9.498947 1.696694 -0.16636060</span></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="co">#&gt; Moist  2.90 7.861298 1.765817 -0.02346540</span></span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="co">#&gt; Manure 1.75 6.461424 9.384723  0.78784718</span></span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="co">#&gt; Use    1.90 3.435113 1.782458 -0.33963301</span></span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="co">#&gt; MagBF  0.15 1.596872 4.501582  0.25168168</span></span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="co">#&gt; MagHF  0.25 1.936492 2.671474  0.09905591</span></span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a><span class="co">#&gt; MagNM  0.30 2.049390 9.566575  0.71778929</span></span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a><span class="co">#&gt; attr(,&quot;meaning&quot;)</span></span>
+<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mean, sd, VIF, standardized regression coefficients.&quot;</span></span>
+<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a>coefs_LDMC_dcCA <span class="ot">&lt;-</span> regr_table[, <span class="st">&quot;dcCA1&quot;</span>] <span class="sc">/</span> regr_table[, <span class="st">&quot;SDS&quot;</span>]</span>
+<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a><span class="fu">range</span>(<span class="fu">coef</span>(lmLDMC)[<span class="sc">-</span><span class="dv">1</span>] <span class="sc">/</span> coefs_LDMC_dcCA)</span>
+<span id="cb14-14"><a href="#cb14-14" tabindex="-1"></a><span class="co">#&gt; [1] 154.4359 154.4359</span></span></code></pre></div>
+<p>The result shows that the two sets of coefficients are equal up to a
+constant of proportionality, here 154.4359.</p>
+</div>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1 class="unnumbered">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-doledec1996RLQ" class="csl-entry">
+Dolédec, Sylvain, Daniel Chessel, Cajo JF Ter Braak, and Stéphane
+Champely. 1996. <span>“Matching Species Traits to Environmental
+Variables: A New Three-Table Ordination Method.”</span>
+<em>Environmental and Ecological Statistics</em> 3: 143–66.
+</div>
+<div id="ref-dray2014RLQ" class="csl-entry">
+Dray, Stéphane, Philippe Choler, Sylvain Dolédec, Pedro R Peres-Neto,
+Wilfried Thuiller, Sandrine Pavoine, and Cajo JF Ter Braak. 2014.
+<span>“Combining the Fourth-Corner and the RLQ Methods for Assessing
+Trait Responses to Environmental Variation.”</span> <em>Ecology</em> 95
+(1): 14–21.
+</div>
+<div id="ref-dray2007ade4" class="csl-entry">
+Dray, Stéphane, and Anne-Béatrice Dufour. 2007. <span>“The Ade4 Package:
+Implementing the Duality Diagram for Ecologists.”</span> <em>Journal of
+Statistical Software</em> 22: 1–20.
+</div>
+<div id="ref-gobbi2022hay" class="csl-entry">
+Gobbi, Mauro, Luca Corlatti, Marco Caccianiga, Cajo JF Ter Braak, and
+Luca Pedrotti. 2022. <span>“Hay Meadows’ Overriding Effect Shapes Ground
+Beetle Functional Diversity in Mountainous Landscapes.”</span>
+<em>Ecosphere</em> 13 (8): e4193.
+</div>
+<div id="ref-kleyer2012assessing" class="csl-entry">
+Kleyer, Michael, Stéphane Dray, Francescode Bello, Jan Lepš, Robin J
+Pakeman, Barbara Strauss, Wilfried Thuiller, and Sandra Lavorel. 2012.
+<span>“Assessing Species and Community Functional Responses to
+Environmental Gradients: Which Multivariate Methods?”</span> <em>Journal
+of Vegetation Science</em> 23 (5): 805–21.
+</div>
+<div id="ref-lepvs2023differences" class="csl-entry">
+Lepš, Jan, and Francesco De Bello. 2023. <span>“Differences in
+Trait–Environment Relationships: Implications for Community Weighted
+Means Tests.”</span> <em>Journal of Ecology</em> 111 (11): 2328–41.
+</div>
+<div id="ref-oksanen_vegan2024" class="csl-entry">
+Oksanen, Jari, Gavin L. Simpson, F. Guillaume Blanchet, Roeland Kindt,
+Pierre Legendre, Peter R. Minchin, R. B. O’Hara, Peter Solymos, et al.
+2024. <em>Vegan: Community Ecology Package</em>. <a href="https://CRAN.R-project.org/package=vegan">https://CRAN.R-project.org/package=vegan</a>.
+</div>
+<div id="ref-peng2021double" class="csl-entry">
+Peng, Feng-Jiao, Cajo JF Ter Braak, Andreu Rico, and Paul J Van den
+Brink. 2021. <span>“Double Constrained Ordination for Assessing
+Biological Trait Responses to Multiple Stressors: A Case Study with
+Benthic Macroinvertebrate Communities.”</span> <em>Science of the Total
+Environment</em> 754: 142171.
+</div>
+<div id="ref-peres2017linking" class="csl-entry">
+Peres-Neto, Pedro R, Stéphane Dray, and Cajo JF Ter Braak. 2017.
+<span>“Linking Trait Variation to the Environment: Critical Issues with
+Community-Weighted Mean Correlation Resolved by the Fourth-Corner
+Approach.”</span> <em>Ecography</em> 40 (7): 806–16.
+</div>
+<div id="ref-pinho2021functional" class="csl-entry">
+Pinho, Bruno X, Marcelo Tabarelli, Cajo JF ter Braak, S Joseph Wright,
+Vı́ctor Arroyo-Rodrı́guez, Maı́ra Benchimol, Bettina MJ Engelbrecht, et al.
+2021. <span>“Functional Biogeography of Neotropical Moist Forests:
+Trait–Climate Relationships and Assembly Patterns of Tree
+Communities.”</span> <em>Global Ecology and Biogeography</em> 30 (7):
+1430–46.
+</div>
+<div id="ref-permute2022" class="csl-entry">
+Simpson, Gavin L. 2022. <em>Permute: Functions for Generating Restricted
+Permutations of Data</em>. <a href="https://CRAN.R-project.org/package=permute">https://CRAN.R-project.org/package=permute</a>.
+</div>
+<div id="ref-Braak2019MEE" class="csl-entry">
+Ter Braak, Cajo JF. 2019. <span>“New Robust Weighted Averaging-and
+Model-Based Methods for Assessing Trait–Environment
+Relationships.”</span> <em>Methods in Ecology and Evolution</em> 10
+(11): 1962–71.
+</div>
+<div id="ref-Braak2012max_test" class="csl-entry">
+Ter Braak, Cajo JF, Anouk Cormont, and Stéphane Dray. 2012.
+<span>“Improved Testing of Species Traits–Environment Relationships in
+the Fourth-Corner Problem.”</span> <em>Ecology</em> 93 (7): 1525–26.
+</div>
+<div id="ref-Braak2018simple" class="csl-entry">
+Ter Braak, Cajo JF, Pedro R Peres-Neto, and Stéphane Dray. 2018.
+<span>“Simple Parametric Tests for Trait–Environment
+Association.”</span> <em>Journal of Vegetation Science</em> 29 (5):
+801–11.
+</div>
+<div id="ref-Braak2018canoco" class="csl-entry">
+Ter Braak, Cajo JF, and Petr Šmilauer. 2018. <span>“Canoco Reference
+Manual and User’s Guide: Software for Ordination, Version 5.10.”</span>
+</div>
+<div id="ref-Braak2018dcCA" class="csl-entry">
+Ter Braak, Cajo JF, Petr Šmilauer, and Stéphane Dray. 2018.
+<span>“Algorithms and Biplots for Double Constrained Correspondence
+Analysis.”</span> <em>Environmental and Ecological Statistics</em> 25
+(2): 171–97.
+</div>
+<div id="ref-thioulouse2018multivariate" class="csl-entry">
+Thioulouse, Jean, Stéphane Dray, Anne-Béatrice Dufour, Aurélie
+Siberchicot, Thibaut Jombart, and Sandrine Pavoine. 2018.
+<em>Multivariate Analysis of Ecological Data with Ade4</em>. Springer.
+</div>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
