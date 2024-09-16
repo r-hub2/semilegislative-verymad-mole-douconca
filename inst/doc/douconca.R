@@ -11,7 +11,7 @@ library(douconca)
 library(douconca)
 data("dune_trait_env")
 names(dune_trait_env)
-dim(dune_trait_env$comm[,-1]) ## without the variable "Sites"
+dim(dune_trait_env$comm[, -1]) ## without the variable "Sites"
 dim(dune_trait_env$traits)
 dim(dune_trait_env$envir)
 names(dune_trait_env$traits)
@@ -37,7 +37,7 @@ anova(mod, by = "axis")
 
 ## -----------------------------------------------------------------------------
 mod_e <-  dc_CA(formulaEnv = ~ A1 + Moist + Manure + Use + Mag,
-                formulaTraits = ~ F + R+ N + L,
+                formulaTraits = ~ F + R + N + L,
                 response = Y,
                 dataEnv = dune_trait_env$envir,
                 dataTraits = dune_trait_env$traits)
@@ -81,4 +81,8 @@ anova(lmLDMC, lm(LDMC ~ 1, data = envCWM))
 (regr_table <- scores(mod_LDMC, display = "reg"))
 coefs_LDMC_dcCA <- regr_table[, "dcCA1"] / regr_table[, "SDS"]
 range(coef(lmLDMC)[-1] / coefs_LDMC_dcCA)
+
+## -----------------------------------------------------------------------------
+cbind(summary(lmLDMC)$coefficients[-1, "t value", drop = FALSE],
+scores(mod_LDMC, display = "tval"))
 
